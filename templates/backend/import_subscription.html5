@@ -1,0 +1,45 @@
+<div id="tl_buttons">
+    <a accesskey="b" title="<?php echo specialchars($this->backBTN_lang); ?>" class="header_back" href="<?php echo $this->backBTN_url; ?>"><?php echo $this->backBTN_lang; ?></a>
+</div>
+<?php echo $this->Message; ?>
+<form enctype="multipart/form-data" method="post" class="tl_form" id="tl_recipients_import" action="contao/main.php?do=newsletter&amp;table=tl_newsletter_recipients&amp;id=1&amp;key=import&amp;rt=b99e34e8330b43db6296af4871ae5d2c&amp;ref=eb51ddb5">
+    <div class="tl_formbody_edit">
+	<input type="hidden" value="tl_import_subscription" name="FORM_SUBMIT">
+	<input type="hidden" value="<?php echo REQUEST_TOKEN; ?>" name="REQUEST_TOKEN">
+	<input type="hidden" value="<?php echo \Config::get('maxFileSize'); ?>" name="MAX_FILE_SIZE">
+
+	<div class="tl_tbox">
+	    <h3><label for="import_module">Import-Schema</label></h3>
+	    <select onfocus="Backend.getScrollOffset()" class="tl_select" id="import_module" name="import_module" style="opacity: 0;">
+		<option value="default">Standard</option>
+		<option value="menschundmedien">MenschundMedien</option>
+	    </select>
+	    <p class="tl_help tl_tip" title="">Bitte wählen Sie das Import-Schema aus.</p>
+
+	    <h3>Quelldateien</h3>
+	    <div id="upload-fields">
+	    <?php echo $this->Uploader; ?>
+	    </div>
+
+	    <script>
+	    window.addEvent("domready", function() {
+		if ("multiple" in document.createElement("input")) {
+		    var div = $("upload-fields");
+		    var input = div.getElement("input");
+		    div.empty();
+		    input.set("multiple", true);
+		    input.inject(div);
+		}
+	    });
+	    </script>
+
+	    <p class="tl_help tl_tip" title="">Bitte laden Sie die zu importierenden CSV-Dateien hoch.</p>
+	</div>
+    </div>
+
+    <div class="tl_formbody_submit">
+	<div class="tl_submit_container">
+	    <input type="submit" value="CSV-Import" accesskey="s" class="tl_submit" id="save" name="save">
+	</div>
+    </div>
+</form>
