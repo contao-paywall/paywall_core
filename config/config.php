@@ -31,3 +31,9 @@ if(!\Config::Get('paywallDisplayname'))
 	\Config::set('paywallDisplayname', 'CONCAT(firstname, " ", lastname)');
 	\Config::persist('paywallDisplayname', 'CONCAT(firstname, " ", lastname)');
 }
+
+$GLOBALS['TL_HEAD']['PIXELSPREADDE'] = '<!--
+    This Contao OpenSource CMS uses modules from pixelSpread.de
+    Copyright (c)2012 - ' . date("Y") . ' by Sascha Brandhoff :: Extensions of pixelSpread.de are copyright of their respective owners
+    Visit our website at http://www.pixelSpread.de for more information
+//-->';
